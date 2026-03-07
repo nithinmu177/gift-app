@@ -1,0 +1,55 @@
+<div class="split">
+  <section class="card">
+    <h2>Create your account</h2>
+    <p>Start planning events, tracking gifts, and managing orders.</p>
+    <form class="form-grid" (ngSubmit)="signup()">
+      <div>
+        <label>Full name</label>
+        <input type="text" [(ngModel)]="name" name="name" placeholder="Nithin M U" />
+      </div>
+      <div>
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="you@example.com" />
+      </div>
+      <div class="grid grid-2">
+        <div>
+          <label>Password</label>
+          <input type="password" [(ngModel)]="password" name="password" />
+        </div>
+        <div>
+          <label>Confirm password</label>
+          <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" />
+        </div>
+      </div>
+      <div>
+        <label>Role</label>
+        <select [(ngModel)]="role" name="role">
+          <option value="user">User</option>
+          <option value="vendor">Vendor</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button class="btn primary" type="submit" [disabled]="loading">
+        {{ loading ? 'Creating...' : 'Create account' }}
+      </button>
+      <div class="status" *ngIf="status">
+        <strong>{{ status }}</strong>
+        <span *ngIf="userId">Firebase UID: {{ userId }}</span>
+      </div>
+      <a routerLink="/login" class="link">Already have an account? Login</a>
+    </form>
+  </section>
+
+  <aside class="card">
+    <h3>Your data stays organized</h3>
+    <p>
+      Manage events, gifts, vendors, and orders with role-based dashboards. The
+      system supports admin, vendor, and user workflows.
+    </p>
+    <ul class="list">
+      <li>Admin control for catalogs and reports.</li>
+      <li>Vendor tools for inventory tracking.</li>
+      <li>User alerts for order and event updates.</li>
+    </ul>
+  </aside>
+</div>

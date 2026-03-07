@@ -1,0 +1,65 @@
+<div class="section-title">
+  <h2>Shopping cart & checkout</h2>
+  <span class="pill">Secure payment</span>
+</div>
+
+<div class="split">
+  <section class="card">
+    <h3>Selected gifts</h3>
+    <div class="cart-list" *ngIf="cart.items.length; else emptyState">
+      <div class="cart-row" *ngFor="let item of cart.items">
+        <div>
+          <h4>{{ item.name }}</h4>
+          <p>{{ item.category }} · Rs. {{ item.price }}</p>
+        </div>
+        <div class="cart-actions">
+          <input
+            type="number"
+            [ngModel]="item.quantity"
+            (ngModelChange)="updateQuantity(item, $event)"
+            min="1"
+          />
+          <button class="btn light" (click)="removeItem(item)">Remove</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #emptyState>
+      <p>No gifts in cart yet. Add items from the Gifts page.</p>
+    </ng-template>
+  </section>
+
+  <aside class="card">
+    <h3>Delivery & payment</h3>
+    <div class="form-grid">
+      <input type="text" placeholder="Full name" />
+      <input type="email" placeholder="Email address" />
+      <input type="text" placeholder="Delivery address" />
+      <div class="grid grid-2">
+        <input type="text" placeholder="City" />
+        <input type="text" placeholder="PIN" />
+      </div>
+      <input type="text" placeholder="Phone number" />
+      <input type="date" [(ngModel)]="deliveryDate" />
+      <input type="text" placeholder="Coupon code" [(ngModel)]="coupon" />
+    </div>
+    <div class="summary">
+      <div>
+        <span>Subtotal</span>
+        <strong>Rs. {{ cart.subtotal }}</strong>
+      </div>
+      <div>
+        <span>Delivery</span>
+        <strong>Rs. {{ cart.items.length ? 150 : 0 }}</strong>
+      </div>
+      <div class="total">
+        <span>Total</span>
+        <strong>Rs. {{ total }}</strong>
+      </div>
+    </div>
+    <div class="payment-buttons">
+      <button class="btn primary">Pay with Razorpay</button>
+      <button class="btn ghost">Pay with Stripe</button>
+      <button class="btn light">Pay with PayPal</button>
+    </div>
+  </aside>
+</div>

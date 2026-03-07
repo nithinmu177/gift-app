@@ -1,0 +1,41 @@
+<div class="section-title">
+  <h2>Gift recommendations</h2>
+  <span class="pill">Smart filters</span>
+</div>
+
+<div class="card filter-bar">
+  <input type="text" placeholder="Search gifts" [(ngModel)]="filter.search" />
+  <select [(ngModel)]="filter.category">
+    <option *ngFor="let option of categories" [value]="option">{{ option }}</option>
+  </select>
+  <select [(ngModel)]="filter.budget">
+    <option *ngFor="let option of budgets" [value]="option">{{ option }}</option>
+  </select>
+  <select [(ngModel)]="filter.relation">
+    <option *ngFor="let option of relations" [value]="option">{{ option }}</option>
+  </select>
+</div>
+
+<div class="grid grid-3">
+  <div class="card gift-card" *ngFor="let gift of filteredGifts">
+    <div class="gift-image">
+      <img
+        [src]="gift.imageUrl"
+        [alt]="gift.name"
+        loading="lazy"
+        (error)="handleImageError($event)"
+      />
+    </div>
+    <div class="gift-meta">
+      <div>
+        <h3>{{ gift.name }}</h3>
+        <p>{{ gift.category }}</p>
+      </div>
+      <span class="tag">{{ gift.tag }}</span>
+    </div>
+    <div class="gift-footer">
+      <span class="price">Rs. {{ gift.price }}</span>
+      <button class="btn primary" (click)="addToCart(gift)">Add to cart</button>
+    </div>
+  </div>
+</div>

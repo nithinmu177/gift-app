@@ -1,0 +1,31 @@
+form label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.status {
+  margin-top: 0.75rem;
+  color: var(--teal);
+  font-weight: 600;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: rgba(46, 125, 124, 0.12);
+}
+
+.link {
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.list {
+  margin: 1rem 0 0;
+  padding: 0 0 0 1rem;
+  color: var(--muted);
+}
+
+.list li {
+  margin-bottom: 0.6rem;
+}

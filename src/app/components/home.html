@@ -1,0 +1,91 @@
+<section class="hero card">
+  <div>
+    <span class="pill">Plan. Gift. Celebrate.</span>
+    <h2>Everything you need to plan events and deliver perfect gifts.</h2>
+    <p>
+      Build event timelines, discover thoughtful gifts, and send them with
+      confidence. Event Gift Planner brings planning, gifting, and delivery
+      into one calm dashboard.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/events" class="btn primary">Create an event</a>
+      <a routerLink="/gifts" class="btn light">Browse gifts</a>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <div>
+      <h3>Today&#39;s focus</h3>
+      <p>3 upcoming celebrations, 12 curated gifts, 5 pending deliveries.</p>
+    </div>
+    <div class="hero-stat">
+      <span>98%</span>
+      <p>On-time delivery rate</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <h2>Choose an event type</h2>
+    <span class="pill">Quick setup</span>
+  </div>
+  <div class="grid grid-2">
+    <div class="card event-card" *ngFor="let event of eventTypes">
+      <div class="event-image">
+        <img
+          [src]="event.imageUrl"
+          [alt]="event.title"
+          loading="lazy"
+          (error)="handleImageError($event)"
+        />
+      </div>
+      <div>
+        <span class="event-mark">{{ event.code }}</span>
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <h2>Gift ideas trending now</h2>
+    <a routerLink="/gifts" class="btn ghost">See all gifts</a>
+  </div>
+  <div class="grid grid-3">
+    <div class="card gift-card" *ngFor="let gift of giftIdeas">
+      <div class="gift-image">
+        <img
+          [src]="gift.imageUrl"
+          [alt]="gift.name"
+          loading="lazy"
+          (error)="handleImageError($event)"
+        />
+      </div>
+      <div class="gift-meta">
+        <div>
+          <h3>{{ gift.name }}</h3>
+          <p>{{ gift.category }}</p>
+        </div>
+        <span class="tag">{{ gift.tag }}</span>
+      </div>
+      <div class="gift-footer">
+        <span class="price">Rs. {{ gift.price }}</span>
+        <button class="btn primary" (click)="addToCart(gift)">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <h2>Why planners love us</h2>
+  </div>
+  <div class="grid grid-3">
+    <div class="card highlight" *ngFor="let item of highlights">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+</section>

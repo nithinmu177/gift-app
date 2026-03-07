@@ -1,0 +1,49 @@
+<div class="section-title">
+  <h2>Create and manage events</h2>
+  <span class="pill">Event planner</span>
+</div>
+
+<div class="split">
+  <section class="card">
+    <h3>New event</h3>
+    <form class="form-grid" (ngSubmit)="addEvent()">
+      <div>
+        <label>Event name</label>
+        <input type="text" [(ngModel)]="newEvent.name" name="name" placeholder="Event title" />
+      </div>
+      <div class="grid grid-2">
+        <div>
+          <label>Date</label>
+          <input type="date" [(ngModel)]="newEvent.date" name="date" />
+        </div>
+        <div>
+          <label>Theme</label>
+          <input type="text" [(ngModel)]="newEvent.theme" name="theme" placeholder="Theme" />
+        </div>
+      </div>
+      <div>
+        <label>Location</label>
+        <input type="text" [(ngModel)]="newEvent.location" name="location" placeholder="Venue" />
+      </div>
+      <div>
+        <label>Host</label>
+        <input type="text" [(ngModel)]="newEvent.host" name="host" placeholder="Organizer" />
+      </div>
+      <button class="btn primary" type="submit">Save event</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h3>Upcoming events</h3>
+    <div class="event-list">
+      <div class="event-row" *ngFor="let event of events">
+        <div>
+          <h4>{{ event.name }}</h4>
+          <p>{{ event.date }} · {{ event.theme }}</p>
+          <span class="tag">{{ event.location }}</span>
+        </div>
+        <button class="btn light" (click)="removeEvent(event)">Remove</button>
+      </div>
+    </div>
+  </section>
+</div>

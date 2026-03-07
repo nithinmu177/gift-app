@@ -1,0 +1,61 @@
+<div class="section-title">
+  <h2>Notifications & support</h2>
+  <span class="pill">Stay informed</span>
+</div>
+
+<div class="split">
+  <section class="card">
+    <h3>Notification settings</h3>
+    <div class="toggle-list">
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="emailUpdates" />
+        Email updates
+      </label>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="smsUpdates" />
+        SMS updates
+      </label>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="otpAlerts" />
+        OTP verification alerts
+      </label>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="orderUpdates" />
+        Order status updates
+      </label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Contact support</h3>
+    <form class="form-grid">
+      <input type="text" placeholder="Full name" />
+      <input type="email" placeholder="Email address" />
+      <select>
+        <option>User</option>
+        <option>Vendor</option>
+        <option>Admin</option>
+      </select>
+      <textarea placeholder="How can we help?"></textarea>
+      <button class="btn primary" type="button">Send message</button>
+    </form>
+  </section>
+</div>
+
+<section class="card faq">
+  <h3>Frequently asked questions</h3>
+  <div class="faq-grid">
+    <div>
+      <h4>Which payment gateways are supported?</h4>
+      <p>Razorpay, Stripe, and PayPal integrations are ready for checkout.</p>
+    </div>
+    <div>
+      <h4>How do I change delivery dates?</h4>
+      <p>Use the delivery calendar in the cart before confirming payment.</p>
+    </div>
+    <div>
+      <h4>Can vendors update inventory?</h4>
+      <p>Vendors can manage stock from their catalog dashboard.</p>
+    </div>
+  </div>
+</section>

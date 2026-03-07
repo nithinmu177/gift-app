@@ -1,0 +1,23 @@
+.toggle-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.toggle {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  font-weight: 600;
+}
+
+.faq {
+  margin-top: 2rem;
+}
+
+.faq-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

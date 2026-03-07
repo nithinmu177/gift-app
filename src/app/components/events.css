@@ -1,0 +1,19 @@
+.event-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.event-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(245, 169, 129, 0.08);
+}
+
+.event-row h4 {
+  margin: 0 0 0.3rem;
+}

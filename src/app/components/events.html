@@ -42,7 +42,7 @@
           <p>{{ event.date }} · {{ event.theme }}</p>
           <span class="tag">{{ event.location }}</span>
         </div>
-        <button class="btn light" (click)="removeEvent(event)">Remove</button>
+        <button class="btn light" (click)="removeEvent(event.id)">Remove</button>
       </div>
     </div>
   </section>

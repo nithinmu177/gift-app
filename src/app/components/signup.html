@@ -5,11 +5,15 @@
     <form class="form-grid" (ngSubmit)="signup()">
       <div>
         <label>Full name</label>
-        <input type="text" [(ngModel)]="name" name="name" placeholder="Nithin M U" />
+        <input type="text" [(ngModel)]="name" name="name" placeholder="Your Name" />
       </div>
       <div>
         <label>Email</label>
         <input type="email" [(ngModel)]="email" name="email" placeholder="you@example.com" />
+      </div>
+      <div>
+        <label>Phone (optional)</label>
+        <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Your phone number" />
       </div>
       <div class="grid grid-2">
         <div>
@@ -21,20 +25,11 @@
           <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" />
         </div>
       </div>
-      <div>
-        <label>Role</label>
-        <select [(ngModel)]="role" name="role">
-          <option value="user">User</option>
-          <option value="vendor">Vendor</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
       <button class="btn primary" type="submit" [disabled]="loading">
         {{ loading ? 'Creating...' : 'Create account' }}
       </button>
       <div class="status" *ngIf="status">
         <strong>{{ status }}</strong>
-        <span *ngIf="userId">Firebase UID: {{ userId }}</span>
       </div>
       <a routerLink="/login" class="link">Already have an account? Login</a>
     </form>

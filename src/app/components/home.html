@@ -36,7 +36,6 @@
           [src]="event.imageUrl"
           [alt]="event.title"
           loading="lazy"
-          (error)="handleImageError($event)"
         />
       </div>
       <div>
@@ -60,7 +59,6 @@
           [src]="gift.imageUrl"
           [alt]="gift.name"
           loading="lazy"
-          (error)="handleImageError($event)"
         />
       </div>
       <div class="gift-meta">

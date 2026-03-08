@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartItem, CartService } from '../services/cart.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -10,11 +12,27 @@ import { CartItem, CartService } from '../services/cart.service';
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
-export class CartComponent {
+export class CartComponent implements OnInit, OnDestroy {
+  items: CartItem[] = [];
   coupon = '';
   deliveryDate = '';
+  private destroy$ = new Subject<void>();
 
   constructor(public cart: CartService) {}
+
+  ngOnInit() {
+    this.cart
+      .getItems()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((items) => {
+        this.items = items;
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   updateQuantity(item: CartItem, value: number) {
     this.cart.updateQuantity(item, value);
@@ -25,7 +43,7 @@ export class CartComponent {
   }
 
   get total() {
-    const deliveryFee = this.cart.items.length ? 150 : 0;
+    const deliveryFee = this.items.length ? 150 : 0;
     return this.cart.subtotal + deliveryFee;
   }
 }

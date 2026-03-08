@@ -31,7 +31,8 @@ export class FirestoreService {
       return of([] as T[]);
     }
     const ref = collection(this.firestore, name);
-    return collectionData(ref, { idField: 'id' }) as Observable<T[]>;
+    const q = query(ref);
+    return collectionData(q, { idField: 'id' }) as Observable<T[]>;
   }
 
   /**
